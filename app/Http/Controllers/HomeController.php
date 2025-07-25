@@ -11,4 +11,9 @@ class HomeController extends Controller
         $products = Product::where('quantity' ,'>', '0')->get();
         return view('home',['products' => $products]);
     }
+    public function home2(){
+//        $products = Product::where('quantity' ,'>', '0')->get();
+        $products = Product::get();
+        return view('home2',['products' => $products]);
+    }
 }
