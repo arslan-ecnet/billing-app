@@ -1,0 +1,2 @@
+* * * * * su -s /bin/bash www-data -c "/usr/bin/php /var/www/html/artisan schedule:run >> /var/www/html/storage/logs/cron.log 2>&1"
+30 0 * * * su -s /bin/bash www-data -c "mysql -h mysql -u root -ppassword -e 'PURGE BINARY LOGS BEFORE NOW();'" >> /var/www/html/storage/logs/cron.log 2>&1
