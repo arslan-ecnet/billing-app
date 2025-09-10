@@ -21,7 +21,13 @@
                     </thead>
                     <tbody>
                     @foreach($products as $product)
-                        <tr id="product-{{ $product->id }}" data-id="{{ $product->id }}"data-size="{{ $product->size }}" data-name="{{ $product->name }}" data-price="{{ $product->sale_price }}" data-off-price="{{ $product->off_price }}">
+                        <tr id="product-{{ $product->id }}"
+                            data-id="{{ $product->id }}"
+                            data-custom-id="{{ $product->custom_id }}"
+                            data-size="{{ $product->size }}"
+                            data-name="{{ $product->name }}"
+                            data-price="{{ $product->sale_price }}"
+                            data-off-price="{{ $product->off_price }}">
                             <td>
                                 <ul>
                                     <li>SKU:<b>{{ $product->category->id}}{{ $product->id }}</b></li>
@@ -308,7 +314,7 @@
 
                         scanCooldown = true;
 
-                        let matchedRow = document.querySelector(`#myTable tr[data-id="${decodedText}"]`);
+                        let matchedRow = document.querySelector(`#myTable tr[data-custom-id="${decodedText}"]`);
                         if (matchedRow) {
                             let productId = matchedRow.getAttribute('data-id');
                             let productName = matchedRow.getAttribute('data-name');

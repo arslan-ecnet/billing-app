@@ -21,6 +21,7 @@
                                 <thead>
                                 <tr>
                                     <th>ID</th>
+                                    <th>QR Code</th>
                                     <th>Name</th>
                                     <th>Category</th>
                                     <th>Quantity</th>
@@ -38,6 +39,7 @@
                                 @foreach($products as $product)
                                     <tr>
                                         <td>{{ $product->id }}</td>
+                                        <td>{!! QrCode::size(80)->generate($product->custom_id) !!}</td>
                                         <td>{{ $product->name }}</td>
                                         <td>{{ $product->category->name }}</td>
                                         <td>{{ $product->quantity }}</td>
@@ -52,9 +54,12 @@
                                         <td>{{ $product->sale_price}}</td>
                                         <td>{{ $product->off_price}}</td>
                                         <td>
-                                            <div class="d-flex">
-                                                <a class="btn btn-info" href="{{ route('editProduct', ['id' => $product->id]) }}">Edit</a>&nbsp
-                                                <a class="btn btn-danger" href="{{ route('deleteProduct', ['id' => $product->id]) }}">Delete</a>
+                                            <div class="d-flex flex-column">
+                                                <div class="d-flex mb-2">
+                                                    <a class="btn btn-info me-2" href="{{ route('editProduct', ['id' => $product->id]) }}">Edit</a>
+                                                    <a class="btn btn-danger" href="{{ route('deleteProduct', ['id' => $product->id]) }}">Delete</a>
+                                                </div>
+                                                <a class="btn btn-warning" href="{{ route('qrCodePrint', ['id' => $product->id]) }}">Print QR Code</a>
                                             </div>
                                         </td>
 

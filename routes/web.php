@@ -7,6 +7,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\QRCodeController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/',[HomeController::class,'home'])->name('home');
@@ -28,6 +29,7 @@ Route::middleware('auth')->group(function () {
     Route::get('invoices',[InvoiceController::class,'productInvoice'])->name('productInvoices');
     Route::get('invoices/{invoice}', [InvoiceController::class,'show'])->name('invoices.show');
     Route::get('invoices/delete/{id}', [InvoiceController::class,'destroy'])->name('invoices.delete');
+    Route::get('qrcode/print/{id}',[QRCodeController::class,'qrCodePrint'])->name('qrCodePrint');
 
 
     Route::get('product-category',[CategoryController::class,'productCategory'])->name('productCategory');
